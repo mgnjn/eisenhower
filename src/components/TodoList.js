@@ -2,12 +2,11 @@ import AddBoxIcon from "@mui/icons-material/AddBox";
 
 import React from "react";
 import { useState } from "react";
-import Todo from "./Todo";
+import Todos from "./Todos";
 
 function TodoList({ type }) {
   const [todos, setTodos] = useState([]);
   const [input, setInput] = useState("");
-  const [listUpdated, setListUpdated] = useState(false);
 
   const handleInputChange = (e) => {
     setInput(e.target.value);
@@ -18,7 +17,7 @@ function TodoList({ type }) {
 
     const newTodo = {
       key: Date.now(),
-      value: input,
+      text: input,
       checked: false,
       delete: false,
     };
@@ -37,21 +36,9 @@ function TodoList({ type }) {
             value={input}
           />
           <AddBoxIcon onClick={(e) => addTodo(e)} />
-          {/* <button type="submit" value="submit" onClick={(e) => addTodo(e)}>
-            Add
-          </button> */}
         </form>
       </div>
-      <div>
-        {todos.map((todo) => (
-          <Todo
-            key={todo.key}
-            value={todo.value}
-            checked={todo.checked}
-            deleteTodo={todo.delete}
-          />
-        ))}
-      </div>
+      <div>{<Todos todos={todos} />}</div>
     </>
   );
 }
