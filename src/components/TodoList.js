@@ -2,6 +2,11 @@ import React, { useState } from "react";
 import Todo from "./Todo";
 
 function TodoList({ todos, setTodos }) {
+  const completeTodo = (id) => {
+    const completedTodos = todos.filter(
+      (todo) => todo.id !== id && todo.completed === true
+    );
+  };
   const removeTodo = (id) => {
     const newTodos = todos.filter((todo) => todo.id !== id);
     setTodos(Object.assign([], newTodos));
@@ -11,7 +16,15 @@ function TodoList({ todos, setTodos }) {
       {
         <ul>
           {todos.map((todo) => {
-            return <Todo todo={todo} key={todo.id} removeTodo={removeTodo} />;
+            return (
+              <Todo
+                key={todo.id}
+                id={todo.id}
+                todo={todo}
+                removeTodo={removeTodo}
+                completeTodo={completeTodo}
+              />
+            );
           })}
         </ul>
       }

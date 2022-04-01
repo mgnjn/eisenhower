@@ -1,22 +1,23 @@
 import React, { useState } from "react";
+import Checkbox from "@mui/material/Checkbox";
 
-import { Button } from "@mui/material";
-function Todo({ todo, removeTodo }) {
+import Button from "@mui/material/Button";
+import DeleteIcon from "@mui/icons-material/Delete";
+function Todo({ id, todo, removeTodo, completeTodo }) {
   return (
     <>
-      <li>
-        {todo.text}
-        <Button
-          size="small"
-          variant="text"
-          onClick={() => {
-            removeTodo(todo.id);
-          }}
-        >
-          Remove
-        </Button>
-        <br></br>
-      </li>
+      <Checkbox size="small" onClick={() => completeTodo(id)} />
+      {todo.text}
+      <Button
+        size="small"
+        variant="text"
+        startIcon={<DeleteIcon />}
+        onClick={() => {
+          removeTodo(id);
+        }}
+      />
+
+      <br></br>
     </>
   );
 }

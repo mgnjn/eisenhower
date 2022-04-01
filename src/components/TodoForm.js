@@ -1,4 +1,5 @@
 import AddBoxIcon from "@mui/icons-material/AddBox";
+import Button from "@mui/material/Button";
 
 import React from "react";
 import { useState } from "react";
@@ -14,11 +15,12 @@ function TodoForm({ type }) {
 
   const addTodo = (e) => {
     const id = Date.now();
+    if (!input) return;
     const newTodo = Object.assign({
       key: id,
       id: id,
       text: input,
-      checked: false,
+      completed: false,
       deleted: false,
     });
 
@@ -37,7 +39,7 @@ function TodoForm({ type }) {
             onChange={(e) => handleInputChange(e)}
             value={input}
           />
-          <AddBoxIcon onClick={(e) => addTodo(e)} />
+          <Button onClick={(e) => addTodo(e)} startIcon={<AddBoxIcon />} />
         </form>
       </div>
       <div>{<TodoList todos={todos} setTodos={setTodos} />}</div>
