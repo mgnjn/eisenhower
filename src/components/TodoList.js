@@ -6,8 +6,9 @@ function TodoList({ todos }) {
     <>
       {
         <ul>
-          <Todo />
-          <Todo />
+          {todos.map((todo) => {
+            return <Todo todo={todo} />;
+          })}
         </ul>
       }
     </>

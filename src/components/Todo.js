@@ -1,7 +1,7 @@
 import React from "react";
 
-function Todo() {
-  return <li>hi</li>;
+function Todo({ todo }) {
+  return <li>{todo.text}</li>;
 }
 
 export default Todo;
