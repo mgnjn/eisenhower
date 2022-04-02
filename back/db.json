@@ -1,0 +1,18 @@
+{
+  "todos": [
+    {
+      "type": 1,
+      "id": 0,
+      "text": "db.json works!",
+      "deleted": true,
+      "completed": true
+    },
+    {
+      "type": 2,
+      "id": 0,
+      "text": "type 2 diabetes!",
+      "deleted": true,
+      "completed": true
+    }
+  ]
+}

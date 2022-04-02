@@ -1,21 +1,23 @@
-import React, { useEffect, useState } from "react";
+import React, { useEffect, useState, useCallback } from "react";
 
 import Todo from "./Todo";
 import axios from "axios";
 
-function TodoList({ todos, setTodos }) {
-  const [tempLoaded, setTempLoaded] = useState(false);
-  const [temp, setTemp] = useState("");
+function TodoList({ type, todos, setTodos }) {
+  const fetchData = useCallback(() => {
+    axios
+      .get("http://localhost:5000/todos")
+      .then((res) => {
+        const data = res.data;
+        const getTodos = data.filter((todo) => todo.type == type);
+        setTodos(Object.assign([], getTodos));
+      })
+      .catch((error) => console.error(error));
+  }, [setTodos, type]);
 
   useEffect(() => {
-    async function fetchData() {
-      let response = await axios(`http://localhost:5000/todos[0]`);
-      let result = await response.data;
-      setTemp(result);
-      setTempLoaded(true);
-    }
     fetchData();
-  }, []);
+  }, [fetchData]);
 
   const completeTodo = (id) => {
     const completedTodos = todos.filter(
@@ -32,6 +34,7 @@ function TodoList({ todos, setTodos }) {
     <>
       <ul>
         {todos.map((todo) => {
+          console.log(todo);
           return (
             <Todo
               key={todo.id}

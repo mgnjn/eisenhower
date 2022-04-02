@@ -5,7 +5,7 @@ import React from "react";
 import { useState } from "react";
 import TodoList from "./TodoList";
 
-function TodoForm({ type }) {
+function TodoForm({ label, type }) {
   const [todos, setTodos] = useState([]);
   const [input, setInput] = useState("");
 
@@ -14,10 +14,12 @@ function TodoForm({ type }) {
   };
 
   const addTodo = (e) => {
-    const id = Date.now();
     if (!input) return;
+
+    const id = Date.now();
     const newTodo = Object.assign({
       key: id,
+      type: type,
       id: id,
       text: input,
       completed: false,
@@ -25,7 +27,6 @@ function TodoForm({ type }) {
     });
 
     setTodos((todos) => [...todos, newTodo]);
-
     e.preventDefault();
   };
 
@@ -33,7 +34,7 @@ function TodoForm({ type }) {
     <>
       <div>
         <form>
-          <label> {type}</label>
+          <label> {label}</label>
           <input
             type="text"
             onChange={(e) => handleInputChange(e)}
@@ -42,7 +43,7 @@ function TodoForm({ type }) {
           <Button onClick={(e) => addTodo(e)} startIcon={<AddBoxIcon />} />
         </form>
       </div>
-      <div>{<TodoList todos={todos} setTodos={setTodos} />}</div>
+      <div>{<TodoList type={type} todos={todos} setTodos={setTodos} />}</div>
     </>
   );
 }

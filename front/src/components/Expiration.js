@@ -1,7 +1,7 @@
 import React from "react";
 
 function Expiration() {
-  return <>April 1, 2022</>;
+  return <>{Date()}</>;
 }
 
 export default Expiration;
