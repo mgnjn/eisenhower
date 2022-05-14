@@ -1,8 +1,14 @@
 # Eisenhower
 
-A simple todo list however a slight variation of the todolist involves using the Eisenhower Matrix instead, which has four quadrants. The eventual goal of this app is that todolist self-updates.
+This app is a simple todo list with a slight variation of the todolist involving the use of the Eisenhower matrix instead, which has four quadrants. The eventual goal of this app is that the todolist self-updates and self-assigns the task to the quadrants based on various factor such as:
+
+- weight / story points
+- deadline date
+- weekly focus
 
 ## Installation
+
+0. Before you can install the app, make sure you have npm installed.
 
 1. Clone the app.
 
