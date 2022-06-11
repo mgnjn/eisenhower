@@ -27,3 +27,13 @@ Same instructions as running the backend except replace `back` with `front`.
 ## Motivation
 
 Create my own personal task manager. 
+
+## Tasks
+
+- Create API server using json-server
+- API server endpoints: create, update, delete
+- Get todos from frontend
+- UI: Make todos draggable
+
+
+## Learnings 
