@@ -1,15 +1,15 @@
 import React from "react";
-import TodoForm from "./TodoForm";
+import Quadrant from "./Quadrant";
 import Expiration from "./Expiration";
 
 function Matrix() {
   return (
     <>
       <Expiration />
-      <TodoForm id="q1" label="Important, Urgent" />
-      <TodoForm id="q2" label="Important, Not Urgent" />
-      <TodoForm id="q3" label="Not Important, Urgent" />
-      <TodoForm id="q4" label="Not Important, Not Urgent" />
+      <Quadrant id="q1" label="Important, Urgent" />
+      <Quadrant id="q2" label="Important, Not Urgent" />
+      <Quadrant id="q3" label="Not Important, Urgent" />
+      <Quadrant id="q4" label="Not Important, Not Urgent" />
     </>
   );
 }

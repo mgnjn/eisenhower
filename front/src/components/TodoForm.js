@@ -3,31 +3,37 @@ import Button from "@mui/material/Button";
 
 import React from "react";
 import { useState } from "react";
-import TodoList from "./TodoList";
+import { nanoid } from "nanoid";
 
-function TodoForm({ id, label }) {
-  const [todos, setTodos] = useState([]);
-  const [input, setInput] = useState("");
-
-  const handleInputChange = (e) => {
-    setInput(e.target.value);
+function TodoForm({ id, label, todos, setTodos }) {
+  const blankTodo = {
+    task: "",
+    id: "",
+    completed: false,
+    deleted: false,
   };
 
-  const addTodo = (e) => {
-    if (!input) return;
+  const [todo, setTodo] = useState(blankTodo);
 
-    const id = Date.now();
-    const newTodo = Object.assign({
-      key: id,
-      label: label,
-      id: id,
-      text: input,
+  const handleInputChange = (e) => {
+    setTodo({ ...todo, task: e.target.value });
+  };
+
+  const onAddTodo = () => {
+    if (todo.task === "") return;
+
+    const identifier = nanoid();
+
+    const newTodo = {
+      key: identifier,
+      id: identifier,
+      task: todo.task,
       completed: false,
       deleted: false,
-    });
+    };
 
-    setTodos((todos) => [...todos, newTodo]);
-    e.preventDefault();
+    setTodos([...todos, newTodo]);
+    setTodo(blankTodo);
   };
 
   return (
@@ -38,13 +44,10 @@ function TodoForm({ id, label }) {
           <input
             type="text"
             onChange={(e) => handleInputChange(e)}
-            value={input}
+            value={todo.task}
           />
-          <Button onClick={(e) => addTodo(e)} startIcon={<AddBoxIcon />} />
+          <Button startIcon={<AddBoxIcon />} onClick={() => onAddTodo()} />
         </form>
-      </div>
-      <div>
-        {<TodoList id={id} todos={todos} setTodos={setTodos} label={label} />}
       </div>
     </>
   );
