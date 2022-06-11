@@ -1,15 +1,15 @@
 import React from "react";
-import Quadrant from "./Quadrant";
+import TodoBox from "./TodoBox";
 import Expiration from "./Expiration";
 
 function Matrix() {
   return (
     <>
       <Expiration />
-      <Quadrant id="q1" label="Important, Urgent" />
-      <Quadrant id="q2" label="Important, Not Urgent" />
-      <Quadrant id="q3" label="Not Important, Urgent" />
-      <Quadrant id="q4" label="Not Important, Not Urgent" />
+      <TodoBox id="q1" label="Important, Urgent" />
+      <TodoBox id="q2" label="Important, Not Urgent" />
+      <TodoBox id="q3" label="Not Important, Urgent" />
+      <TodoBox id="q4" label="Not Important, Not Urgent" />
     </>
   );
 }

@@ -2,7 +2,7 @@ import React, { useEffect, useState } from "react";
 import TodoList from "./TodoList";
 import TodoForm from "./TodoForm";
 
-function Quadrant({ id, label }) {
+function TodoBox({ id, label }) {
   const [todos, setTodos] = useState([]);
 
   useEffect(() => {
@@ -16,4 +16,4 @@ function Quadrant({ id, label }) {
   );
 }
 
-export default Quadrant;
+export default TodoBox;
