@@ -34,6 +34,7 @@ Create my own personal task manager.
 - API server endpoints: create, update, delete
 - Get todos from frontend
 - UI: Make todos draggable
+- Figure out how tasks should be updated (algo for it)
 
 
 ## Learnings 
