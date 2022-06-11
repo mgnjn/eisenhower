@@ -27,8 +27,7 @@ function TodoList({ todos, setTodos }) {
         {todos.map((todo) => {
           return (
             <Todo
-              key={todo.id}
-              id={todo.id}
+              key={todo.todoId}
               todo={todo}
               removeTodo={removeTodo}
               completeTodo={completeTodo}

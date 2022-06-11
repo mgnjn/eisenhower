@@ -8,7 +8,7 @@ import { nanoid } from "nanoid";
 function TodoForm({ id, label, todos, setTodos }) {
   const blankTodo = {
     task: "",
-    id: "",
+    todoId: "",
     completed: false,
     deleted: false,
   };
@@ -26,7 +26,7 @@ function TodoForm({ id, label, todos, setTodos }) {
 
     const newTodo = {
       key: identifier,
-      id: identifier,
+      todoId: identifier,
       task: todo.task,
       completed: false,
       deleted: false,
