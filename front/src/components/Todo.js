@@ -3,21 +3,28 @@ import Checkbox from "@mui/material/Checkbox";
 
 import Button from "@mui/material/Button";
 import DeleteIcon from "@mui/icons-material/Delete";
-function Todo({ id, todo, removeTodo }) {
-  const toggleCompleteTodo = () => {};
-  const handleDeleteTodo = (id) => {
+function Todo({ todo, removeTodo, completeTodo }) {
+  const handleCheckboxClick = (id) => {
+    completeTodo(id);
+  };
+  const handleDeleteButtonClick = (id) => {
     removeTodo(id);
   };
   return (
     <>
-      <Checkbox size="small" />
+      <Checkbox
+        size="small"
+        onChange={() => {
+          handleCheckboxClick(todo.id);
+        }}
+      />
       {todo.task}
       <Button
         size="small"
         variant="text"
         startIcon={<DeleteIcon />}
         onClick={() => {
-          handleDeleteTodo(todo.id);
+          handleDeleteButtonClick(todo.id);
         }}
       />
       <br></br>

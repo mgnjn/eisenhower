@@ -1,6 +1,5 @@
 import React from "react";
 import Todo from "./Todo";
-  const completeTodo = (id) => {
 
 function TodoList({ todos, setTodos }) {
   const removeTodo = (id) => {
@@ -8,7 +7,19 @@ function TodoList({ todos, setTodos }) {
     setTodos(Object.assign([], updatedTodos));
   };
 
-  const completeTodo = () => {};
+  const completeTodo = (id) => {
+    setTodos(
+      todos.map((todo) => {
+        if (todo.id === id) {
+          return {
+            ...todo,
+            completed: !todo.completed,
+          };
+        }
+        return todo;
+      })
+    );
+  };
 
   return (
     <>
@@ -20,6 +31,7 @@ function TodoList({ todos, setTodos }) {
               id={todo.id}
               todo={todo}
               removeTodo={removeTodo}
+              completeTodo={completeTodo}
             />
           );
         })}
