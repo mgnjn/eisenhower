@@ -3,31 +3,41 @@ import Todo from "./Todo";
 
 function TodoList({ todos, setTodos }) {
   const removeTodo = (id) => {
-    const updatedTodos = todos.filter((todo) => todo.id !== id);
-    setTodos(Object.assign([], updatedTodos));
+    const updatedTodos = todos.todoItems.filter((todo) => todo.id !== id);
+    setTodos({
+      quadrant: todos.quadrant,
+      label: todos.label,
+      todoItems: Object.assign([], updatedTodos),
+    });
   };
 
   const completeTodo = (id) => {
-    setTodos(
-      todos.map((todo) => {
-        if (todo.id === id) {
-          return {
-            ...todo,
-            completed: !todo.completed,
-          };
-        }
-        return todo;
-      })
-    );
+    setTodos({
+      quadrant: todos.quadrant,
+      label: todos.label,
+      todoItems: Object.assign(
+        [],
+        todos.todoItems.map((todo) => {
+          if (todo.id === id) {
+            return {
+              ...todo,
+              completed: !todo.completed,
+            };
+          }
+          return todo;
+        })
+      ),
+    });
   };
 
   return (
     <>
       <ul>
-        {todos.map((todo) => {
+        {todos.todoItems.map((todo) => {
           return (
             <Todo
-              key={todo.todoId}
+              key={todo.id}
+              id={todo.id}
               todo={todo}
               removeTodo={removeTodo}
               completeTodo={completeTodo}

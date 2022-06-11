@@ -5,10 +5,10 @@ import React from "react";
 import { useState } from "react";
 import { nanoid } from "nanoid";
 
-function TodoForm({ id, label, todos, setTodos }) {
+function TodoForm({ todos, setTodos }) {
   const blankTodo = {
     task: "",
-    todoId: "",
+    id: "",
     completed: false,
     deleted: false,
   };
@@ -25,14 +25,18 @@ function TodoForm({ id, label, todos, setTodos }) {
     const identifier = nanoid();
 
     const newTodo = {
-      key: identifier,
-      todoId: identifier,
+      quadrant: todos.quadrant,
+      label: todos.label,
+      id: identifier,
       task: todo.task,
       completed: false,
-      deleted: false,
     };
 
-    setTodos([...todos, newTodo]);
+    setTodos({
+      quadrant: todos.quadrant,
+      label: todos.label,
+      todoItems: [...todos.todoItems, newTodo],
+    });
     setTodo(blankTodo);
   };
 
@@ -40,7 +44,7 @@ function TodoForm({ id, label, todos, setTodos }) {
     <>
       <div>
         <form>
-          <label> {label}</label>
+          <label> {todos.label}</label>
           <input
             type="text"
             onChange={(e) => handleInputChange(e)}

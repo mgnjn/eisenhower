@@ -6,10 +6,10 @@ function Matrix() {
   return (
     <>
       <Expiration />
-      <TodoBox id="q1" label="Important, Urgent" />
-      <TodoBox id="q2" label="Important, Not Urgent" />
-      <TodoBox id="q3" label="Not Important, Urgent" />
-      <TodoBox id="q4" label="Not Important, Not Urgent" />
+      <TodoBox quadrant="q1" label="Important, Urgent" />
+      <TodoBox quadrant="q2" label="Important, Not Urgent" />
+      <TodoBox quadrant="q3" label="Not Important, Urgent" />
+      <TodoBox quadrant="q4" label="Not Important, Not Urgent" />
     </>
   );
 }
