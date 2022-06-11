@@ -1,19 +1,17 @@
-const path = require("path");
+const express = require("express");
 const jsonServer = require("json-server");
 const server = jsonServer.create();
-const router = jsonServer.router(path.join(__dirname, "db.json"));
+const router = jsonServer.router("db.json");
 const middlewares = jsonServer.defaults();
 
-server.use(
-  jsonServer.rewriter({
-    "/todos": "/todos",
-  })
-);
+const port = 4000;
+
+server.get("/echo", (req, res) => {
+  return "hello!";
+});
 
 server.use(middlewares);
-server.use(jsonServer.bodyParser);
-
 server.use(router);
-server.listen(4000, () => {
-  console.log("JSON Server is running");
+server.listen(port, () => {
+  console.log(`JSON server running on port ${port}`);
 });

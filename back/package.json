@@ -4,7 +4,7 @@
   "main": "index.js",
   "scripts": {
     "mock:api": "node json-server/server",
-    "start": "nodemon ./src/app.js",
+    "start": "nodemon ./src/app.js && json-server --watch db.json",
     "test": "echo \"Error: no test specified\" && exit 1"
   },
   "keywords": [],
@@ -12,6 +12,7 @@
   "license": "ISC",
   "dependencies": {
     "axios": "^0.26.1",
+    "express": "^4.18.1",
     "nodemon": "^2.0.15"
   },
   "devDependencies": {

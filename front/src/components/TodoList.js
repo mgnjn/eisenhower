@@ -3,21 +3,22 @@ import React, { useEffect, useState, useCallback } from "react";
 import Todo from "./Todo";
 import axios from "axios";
 
-function TodoList({ type, todos, setTodos }) {
-  const fetchData = useCallback(() => {
-    axios
-      .get("http://localhost:5000/todos")
-      .then((res) => {
-        const data = res.data;
-        const getTodos = data.filter((todo) => todo.type == type);
-        setTodos(Object.assign([], getTodos));
-      })
-      .catch((error) => console.error(error));
-  }, [setTodos, type]);
+function TodoList({ id, todos, setTodos }) {
+  // const fetchData = useCallback(() => {
+  //   axios
+  //     .get(`http://localhost:4000/`)
+  //     .then((res) => {
+  //       console.log("this is it1");
+  //       const data = res.data;
+  //       const getTodos = data.filter((todo) => todo.type == type);
+  //       setTodos(Object.assign([], getTodos));
+  //     })
+  //     .catch((error) => console.error(error));
+  // }, [setTodos, id]);
 
-  useEffect(() => {
-    fetchData();
-  }, [fetchData]);
+  // useEffect(() => {
+  //   fetchData();
+  // }, [fetchData]);
 
   const completeTodo = (id) => {
     const completedTodos = todos.filter(
@@ -31,7 +32,7 @@ function TodoList({ type, todos, setTodos }) {
   };
 
   return (
-    <>
+    <React.Fragment>
       <ul>
         {todos.map((todo) => {
           console.log(todo);
@@ -46,7 +47,7 @@ function TodoList({ type, todos, setTodos }) {
           );
         })}
       </ul>
-    </>
+    </React.Fragment>
   );
 }
 
