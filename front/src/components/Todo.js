@@ -1,9 +1,8 @@
 import React from "react";
+import styled from "styled-components";
 import Checkbox from "@mui/material/Checkbox";
 import Button from "@mui/material/Button";
 import DeleteIcon from "@mui/icons-material/Delete";
-import { ItemTypes } from "../utils/items";
-import { useDrag } from "react-dnd";
 
 function Todo({ todo, removeTodo, completeTodo }) {
   const handleCheckboxClick = (id) => {
@@ -13,16 +12,15 @@ function Todo({ todo, removeTodo, completeTodo }) {
     removeTodo(id);
   };
 
-  const [{ isDragging }, drag] = useDrag(() => ({
-    type: ItemTypes.TODO,
-    collect: (monitor) => ({
-      isDragging: !!monitor.isDragging(),
-    }),
-  }));
+  const TodoContainer = styled.div`
+    margin: 8px;
+    border: 1px solid lightgrey;
+    border-radius: 2px;
+  `;
 
   return (
     <>
-      <div ref={drag}>
+      <TodoContainer>
         <Checkbox
           size="small"
           onChange={() => {
@@ -39,7 +37,7 @@ function Todo({ todo, removeTodo, completeTodo }) {
           }}
         />
         <br></br>
-      </div>
+      </TodoContainer>
     </>
   );
 }
