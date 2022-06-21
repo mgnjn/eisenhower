@@ -8,25 +8,9 @@ This app is a simple todo list with a slight variation of the todolist involving
 
 ## Installation
 
-0. Before you can install the app, make sure you have npm installed.
-
-1. Clone the app.
-
-2. Run the backend
-
-```
-cd back
-npm install
-npm run dev
-```
-
-3. Run the frontend
-
-Same instructions as running the backend except replace `back` with `front`.
-
 ## Motivation
 
-Create my own personal task manager. 
+Create my own personal task manager.
 
 ## Tasks
 
@@ -35,6 +19,8 @@ Create my own personal task manager.
 - Get todos from frontend
 - UI: Make todos draggable
 - Figure out how tasks should be updated (algo for it)
+- Hook up to my spotify playlist
+- Automatic lofi girl playback <3 in the background
+- Have dedicated tabs (sticky notes, todo list, lofi)
 
-
-## Learnings 
+## Learnings
