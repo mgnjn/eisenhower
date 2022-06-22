@@ -54,7 +54,6 @@ function TodoList({ todos, setTodos }) {
                       {...provided.draggableProps}
                       ref={provided.innerRef}
                     />
-                    {/* {todo.task} */}
                   </div>
                 )}
               </Draggable>

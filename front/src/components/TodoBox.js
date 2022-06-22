@@ -2,6 +2,13 @@ import React, { useEffect, useState } from "react";
 import TodoList from "./TodoList";
 import TodoForm from "./TodoForm";
 import styled from "styled-components";
+import { DragDropContext } from "react-beautiful-dnd";
+
+const TodoBoxContainer = styled.div`
+  margin: 8px;
+  border: 1px solid blue;
+  border-radius: 2px;
+`;
 
 function TodoBox({ quadrant, label }) {
   const [todos, setTodos] = useState({ quadrant, label, todoItems: [] });
@@ -10,17 +17,28 @@ function TodoBox({ quadrant, label }) {
     console.log(todos);
   }, [todos]);
 
-  const Container = styled.div`
-    margin: 8px;
-    border: 1px solid blue;
-    border-radius: 2px;
-  `;
+  const handleOnDragEnd = (result) => {
+    if (!result.destination) return;
+
+    const items = Array.from(todos.todoItems);
+    const [reorderedItem] = items.splice(result.source.index, 1);
+    items.splice(result.destination.index, 0, reorderedItem);
+
+    setTodos({
+      quadrant: todos.quadrant,
+      label: todos.label,
+      todoItems: items,
+    });
+  };
+
   return (
     <>
-      <Container>
+      <TodoBoxContainer>
         <TodoForm key={quadrant} todos={todos} setTodos={setTodos} />
-        <TodoList todos={todos} setTodos={setTodos} />
-      </Container>
+        <DragDropContext onDragEnd={handleOnDragEnd}>
+          <TodoList todos={todos} setTodos={setTodos} />
+        </DragDropContext>
+      </TodoBoxContainer>
     </>
   );
 }

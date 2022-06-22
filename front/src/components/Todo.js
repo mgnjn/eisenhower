@@ -4,6 +4,12 @@ import Checkbox from "@mui/material/Checkbox";
 import Button from "@mui/material/Button";
 import DeleteIcon from "@mui/icons-material/Delete";
 
+const TodoContainer = styled.div`
+  margin: 8px;
+  border: 1px solid lightgrey;
+  border-radius: 2px;
+`;
+
 function Todo({ todo, removeTodo, completeTodo }) {
   const handleCheckboxClick = (id) => {
     completeTodo(id);
@@ -11,12 +17,6 @@ function Todo({ todo, removeTodo, completeTodo }) {
   const handleDeleteButtonClick = (id) => {
     removeTodo(id);
   };
-
-  const TodoContainer = styled.div`
-    margin: 8px;
-    border: 1px solid lightgrey;
-    border-radius: 2px;
-  `;
 
   return (
     <>
