@@ -10,7 +10,7 @@ This app is a simple todo list with a slight variation of the todolist involving
 
 ## Motivation
 
-Create my own personal task manager.
+Create my own personal task manager/personal agenda.
 
 ## Tasks
 
