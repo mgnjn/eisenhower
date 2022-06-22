@@ -1,5 +1,6 @@
 import React from "react";
 import Todo from "./Todo";
+import { Draggable, Droppable } from "react-beautiful-dnd";
 
 function TodoList({ todos, setTodos }) {
   const removeTodo = (id) => {
@@ -32,19 +33,35 @@ function TodoList({ todos, setTodos }) {
 
   return (
     <>
-      <ul>
-        {todos.todoItems.map((todo) => {
-          return (
-            <Todo
-              key={todo.id}
-              id={todo.id}
-              todo={todo}
-              removeTodo={removeTodo}
-              completeTodo={completeTodo}
-            />
-          );
-        })}
-      </ul>
+      <Droppable droppableId="droppable">
+        {(provided) => (
+          <ul {...provided.droppableProps} ref={provided.innerRef}>
+            {todos.todoItems.map((todo, index) => (
+              <Draggable key={todo.id} draggableId={todo.id} index={index}>
+                {(provided) => (
+                  <div
+                    ref={provided.innerRef}
+                    {...provided.draggableProps}
+                    {...provided.dragHandleProps}
+                  >
+                    <Todo
+                      key={todo.id}
+                      id={todo.id}
+                      todo={todo}
+                      removeTodo={removeTodo}
+                      completeTodo={completeTodo}
+                      {...provided.dragHandleProps}
+                      {...provided.draggableProps}
+                      ref={provided.innerRef}
+                    />
+                  </div>
+                )}
+              </Draggable>
+            ))}
+            {provided.placeholder}
+          </ul>
+        )}
+      </Droppable>
     </>
   );
 }

@@ -5,14 +5,14 @@ import React from "react";
 import { useState } from "react";
 import { nanoid } from "nanoid";
 
-function TodoForm({ todos, setTodos }) {
-  const blankTodo = {
-    task: "",
-    id: "",
-    completed: false,
-    deleted: false,
-  };
+const blankTodo = {
+  task: "",
+  id: "",
+  completed: false,
+  deleted: false,
+};
 
+function TodoForm({ todos, setTodos }) {
   const [todo, setTodo] = useState(blankTodo);
 
   const handleInputChange = (e) => {
@@ -37,6 +37,7 @@ function TodoForm({ todos, setTodos }) {
       label: todos.label,
       todoItems: [...todos.todoItems, newTodo],
     });
+
     setTodo(blankTodo);
   };
 
