@@ -8,6 +8,7 @@ const TodoContainer = styled.div`
   margin: 8px;
   border: 1px solid lightgrey;
   border-radius: 2px;
+  background-color: white;
 `;
 
 function Todo({ todo, removeTodo, completeTodo }) {
