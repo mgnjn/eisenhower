@@ -10,17 +10,22 @@ This app is a simple todo list with a slight variation of the todolist involving
 
 ## Motivation
 
-Create my own personal task manager/personal agenda.
+Create my own personal only task managemenet system/personal agenda.
 
 ## Tasks
 
-- Create API server using json-server
-- API server endpoints: create, update, delete
-- Get todos from frontend
-- UI: Make todos draggable
-- Figure out how tasks should be updated (algo for it)
-- Hook up to my spotify playlist
-- Automatic lofi girl playback <3 in the background
-- Have dedicated tabs (sticky notes, todo list, lofi)
+### Backend
 
-## Learnings
+- [ ] Api: Create API (json-server?) + API server endpoints: create, update, delete
+
+### Frontend 
+
+- [x] Todos: Make todos draggable and droppable into one column
+- [ ] Todos: Make todos draggable and droppable into multiple columns
+- [ ] Todos: Figure out how tasks should be updated (algo for it)
+- [ ] Music: Hook up to my spotify playlist
+- [ ] Music: Automatic lofi girl playback <3 in the background
+- [ ] Organization: Have dedicated tabs (sticky notes, todo list, lofi)
+- [ ] Design: Animated background
+- [ ] Design: Incoporate various themes (for now: dark mode/light mode)
+
