@@ -11,15 +11,17 @@
     "@testing-library/jest-dom": "^5.16.3",
     "@testing-library/user-event": "^13.5.0",
     "axios": "^0.26.1",
-    "react": "^18.0.2",
+    "next": "^12.1.6",
+    "react": "^18.2.0",
     "react-beautiful-dnd": "^13.1.0",
-    "react-dom": "^18.0.2",
+    "react-dom": "^18.2.0",
     "react-scripts": "^5.0.1",
     "styled-components": "^5.3.5"
   },
   "scripts": {
-    "start": "react-scripts start",
-    "build": "react-scripts build",
+    "start": "next start",
+    "build": "next build",
+    "dev": "next dev",
     "test": "react-scripts test",
     "eject": "react-scripts eject"
   },
