@@ -2,11 +2,10 @@ import { makeAutoObservable, makeObservable, observable } from "mobx";
 import { MODES } from "../utils/constants";
 
 export class Mode {
-  activeMode;
+  activeMode = MODES.todoMode;
 
-  constructor(mode) {
+  constructor() {
     makeAutoObservable(this);
-    this.activeMode = MODES.todoMode;
   }
 
   setActiveMode(newActiveMode) {
