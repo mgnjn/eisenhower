@@ -27,15 +27,15 @@ function Navbar({ modeStore }) {
           <Tab label={`${MODES.lofiMode}`} value={`${MODES.lofiMode}`} />
           <Tab label={`${MODES.stickyMode}`} value={`${MODES.stickyMode}`} />
         </Tabs>
-        <TabPanel value={modeStore.activeMode} index={0}>
-          {modeStore.activeMode === MODES.todoMode ? <TodoListBoard /> : null}
-        </TabPanel>
-        <TabPanel value={modeStore.activeMode} index={1}>
-          {modeStore.activeMode === MODES.lofiMode ? <LofiBoard /> : null}
-        </TabPanel>
-        <TabPanel value={modeStore.activeMode} index={2}>
-          {modeStore.activeMode === MODES.stickyMode ? <StickyBoard /> : null}
-        </TabPanel>
+        {modeStore.activeMode === MODES.todoMode ? (
+          <TodoListBoard modeStore={modeStore} />
+        ) : null}
+        {modeStore.activeMode === MODES.lofiMode ? (
+          <LofiBoard modeStore={modeStore} />
+        ) : null}
+        {modeStore.activeMode === MODES.stickyMode ? (
+          <StickyBoard modeStore={modeStore} />
+        ) : null}
       </TabContext>
     </>
   );
