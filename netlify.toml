@@ -1,4 +1,4 @@
 [build]
   base = "front/"
-  publish = "build-output"
-  command = "yarn build"
+  publish = "build"
+  command = "yarn build && serve -s build"
