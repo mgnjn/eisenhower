@@ -1,0 +1,4 @@
+[build]
+  base = "front/"
+  publish = "build-output"
+  command = "yarn build"
