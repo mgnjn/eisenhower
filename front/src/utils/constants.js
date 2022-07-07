@@ -1,5 +1,5 @@
 export const MODES = {
-  TODO: "TodoListComponent",
-  LOFI: "LofiComponent",
-  STICKY: "StickyComponent",
+  todoMode: "TODO",
+  lofiMode: "LOFI",
+  stickyMode: "STICKY",
 };
