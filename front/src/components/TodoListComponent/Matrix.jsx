@@ -1,6 +1,5 @@
 import React from "react";
 import TodoBox from "./TodoBox";
-import Expiration from "./Expiration";
 
 function Matrix() {
   return (

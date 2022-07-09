@@ -1,5 +1,8 @@
 import React from "react";
+import { observer } from "mobx-react-lite";
 import styled from "styled-components";
+import { useUserStore } from "../../stores/user.store";
+
 import Checkbox from "@mui/material/Checkbox";
 import Button from "@mui/material/Button";
 import DeleteIcon from "@mui/icons-material/Delete";
@@ -11,12 +14,16 @@ const TodoContainer = styled.div`
   background-color: white;
 `;
 
-function Todo({ todo, removeTodo, completeTodo }) {
-  const handleCheckboxClick = (id) => {
-    completeTodo(id);
+function Todo({ todo }) {
+  const userStore = useUserStore();
+  const todosStore = userStore.todosStore;
+
+  const handleCheckboxClick = () => {
+    todosStore.completeTodo(todo.quadrant, todo.id);
   };
-  const handleDeleteButtonClick = (id) => {
-    removeTodo(id);
+
+  const handleDeleteButtonClick = () => {
+    todosStore.deleteTodo(todo.quadrant, todo.id);
   };
 
   return (
@@ -25,7 +32,7 @@ function Todo({ todo, removeTodo, completeTodo }) {
         <Checkbox
           size="small"
           onChange={() => {
-            handleCheckboxClick(todo.id);
+            handleCheckboxClick();
           }}
         />
         {todo.task}
@@ -34,7 +41,7 @@ function Todo({ todo, removeTodo, completeTodo }) {
           variant="text"
           startIcon={<DeleteIcon />}
           onClick={() => {
-            handleDeleteButtonClick(todo.id);
+            handleDeleteButtonClick();
           }}
         />
         <br></br>
@@ -43,4 +50,4 @@ function Todo({ todo, removeTodo, completeTodo }) {
   );
 }
 
-export default Todo;
+export default observer(Todo);
