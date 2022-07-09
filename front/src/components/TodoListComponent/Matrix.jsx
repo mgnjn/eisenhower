@@ -7,6 +7,7 @@ import TodoBox from "./TodoBox";
 
 const Matrix = observer(() => {
   const userStore = useUserStore();
+  const todosStore = userStore.todosStore;
 
   const EisenhowerTodoList = () => {
     return (
@@ -19,14 +20,13 @@ const Matrix = observer(() => {
     );
   };
 
-  const toggleTodoStandard = (newStandard) => {
-    userStore.todosStore.setStandard(newStandard);
-  };
-
   return (
     <>
-      <Button onClick={() => toggleTodoStandard(true)}> Standard </Button>
-      <Button onClick={() => toggleTodoStandard(false)}> Matrix </Button>
+      <Button onClick={() => todosStore.switchStandard()}>
+        {userStore.todosStore.isStandard == true
+          ? "Toggle Matrix"
+          : "Toggle Standard"}
+      </Button>
       {userStore.todosStore.isStandard == true ? (
         <TodoBox quadrant={QUADRANTS.q0} label="Tasks" />
       ) : (

@@ -16,8 +16,8 @@ export class TodosStore {
     this.todos[QUADRANTS.q4] = [];
   }
 
-  setStandard(newStandard) {
-    this.isStandard = newStandard;
+  switchStandard() {
+    this.isStandard = !this.isStandard;
   }
 
   addTodo(quadrant, todo) {
