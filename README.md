@@ -18,7 +18,7 @@ Create my own personal only task managemenet system/personal agenda.
 
 - [ ] Api: Create API (json-server?) + API server endpoints: create, update, delete
 
-### Frontend 
+### Frontend
 
 - [x] Todos: Make todos draggable and droppable into one column
 - [ ] Todos: Make todos draggable and droppable into multiple columns
@@ -29,3 +29,19 @@ Create my own personal only task managemenet system/personal agenda.
 - [ ] Design: Animated background
 - [ ] Design: Incoporate various themes (for now: dark mode/light mode)
 
+Features
+
+todolist:
+
+- Time allotments: put option to estimate time per task
+- Group task within quadrant. ie q1 school, q1 admin
+- Toggle eisenhower todolist and normal todolist
+- Deadlines
+
+music:
+
+- sort music by moods
+
+sticky:
+
+- allow drawing mode?

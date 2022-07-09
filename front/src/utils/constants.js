@@ -1,6 +1,6 @@
 export const MODES = {
   todoMode: "TODO",
-  lofiMode: "LOFI",
+  musicMode: "MUSIC",
   stickyMode: "STICKY",
 };
 

@@ -4,7 +4,7 @@ import { observer } from "mobx-react-lite";
 import { useUserStore } from "../../stores/user.store";
 
 import TodoListBoard from "../TodoListComponent/TodoListBoard";
-import LofiBoard from "../LofiComponent/LofiBoard";
+import MusicPlayerBoard from "../MusicPlayerComponent/MusicPlayerBoard";
 import StickyBoard from "../StickyComponent/StickyBoard";
 
 import { Tabs, Tab } from "@mui/material";
@@ -25,14 +25,14 @@ const Navbar = observer(() => {
           onChange={(e) => handleTabChange(e.target.textContent)}
         >
           <Tab label={`${MODES.todoMode}`} value={`${MODES.todoMode}`} />
-          <Tab label={`${MODES.lofiMode}`} value={`${MODES.lofiMode}`} />
+          <Tab label={`${MODES.musicMode}`} value={`${MODES.musicMode}`} />
           <Tab label={`${MODES.stickyMode}`} value={`${MODES.stickyMode}`} />
         </Tabs>
         {userStore.modeStore.activeMode === MODES.todoMode ? (
           <TodoListBoard />
         ) : null}
-        {userStore.modeStore.activeMode === MODES.lofiMode ? (
-          <LofiBoard />
+        {userStore.modeStore.activeMode === MODES.musicMode ? (
+          <MusicPlayerBoard />
         ) : null}
         {userStore.modeStore.activeMode === MODES.stickyMode ? (
           <StickyBoard />
