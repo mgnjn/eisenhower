@@ -1,8 +1,8 @@
 import React from "react";
 import Matrix from "./Matrix";
 
-function TodoListBoard() {
+const TodoListBoard = () => {
   return <Matrix />;
-}
+};
 
 export default TodoListBoard;
