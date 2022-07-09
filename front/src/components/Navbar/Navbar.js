@@ -6,35 +6,38 @@ import StickyBoard from "../StickyComponent/StickyBoard";
 import { Tabs, Tab, Box } from "@mui/material";
 import { TabContext, TabPanel } from "@mui/lab";
 import { observer } from "mobx-react-lite";
+import { useUserStore } from "../../stores/user.store";
 
-function Navbar({ modeStore }) {
+function Navbar() {
+  const userStore = useUserStore();
+
   const handleTabChange = (newTab) => {
-    modeStore.setActiveMode(newTab);
+    userStore.modeStore.setActiveMode(newTab);
   };
 
   useEffect(() => {
-    console.log(modeStore.activeMode);
-  }, [modeStore.activeMode]);
+    console.log(userStore.modeStore.activeMode);
+  }, [userStore.modeStore.activeMode]);
 
   return (
     <>
-      <TabContext value={modeStore.activeMode}>
+      <TabContext value={userStore.modeStore.activeMode}>
         <Tabs
-          value={modeStore.activeMode}
+          value={userStore.modeStore.activeMode}
           onChange={(e) => handleTabChange(e.target.textContent)}
         >
           <Tab label={`${MODES.todoMode}`} value={`${MODES.todoMode}`} />
           <Tab label={`${MODES.lofiMode}`} value={`${MODES.lofiMode}`} />
           <Tab label={`${MODES.stickyMode}`} value={`${MODES.stickyMode}`} />
         </Tabs>
-        {modeStore.activeMode === MODES.todoMode ? (
-          <TodoListBoard modeStore={modeStore} />
+        {userStore.modeStore.activeMode === MODES.todoMode ? (
+          <TodoListBoard />
         ) : null}
-        {modeStore.activeMode === MODES.lofiMode ? (
-          <LofiBoard modeStore={modeStore} />
+        {userStore.modeStore.activeMode === MODES.lofiMode ? (
+          <LofiBoard />
         ) : null}
-        {modeStore.activeMode === MODES.stickyMode ? (
-          <StickyBoard modeStore={modeStore} />
+        {userStore.modeStore.activeMode === MODES.stickyMode ? (
+          <StickyBoard />
         ) : null}
       </TabContext>
     </>

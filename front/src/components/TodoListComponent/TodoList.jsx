@@ -2,38 +2,43 @@ import React from "react";
 import Todo from "./Todo";
 import { Draggable, Droppable } from "react-beautiful-dnd";
 
-function TodoList({ todos, setTodos }) {
-  const removeTodo = (id) => {
-    const updatedTodos = todos.todoItems.filter((todo) => todo.id !== id);
-    setTodos({
-      quadrant: todos.quadrant,
-      label: todos.label,
-      todoItems: Object.assign([], updatedTodos),
-    });
-  };
+function TodoList({ todosStore }) {
+  // const removeTodo = (id) => {
+  //   const updatedTodos = todos.todoItems.filter((todo) => todo.id !== id);
+  //   setTodos({
+  //     quadrant: todos.quadrant,
+  //     label: todos.label,
+  //     todoItems: Object.assign([], updatedTodos),
+  //   });
+  // };
 
-  const completeTodo = (id) => {
-    setTodos({
-      quadrant: todos.quadrant,
-      label: todos.label,
-      todoItems: Object.assign(
-        [],
-        todos.todoItems.map((todo) => {
-          if (todo.id === id) {
-            return {
-              ...todo,
-              completed: !todo.completed,
-            };
-          }
-          return todo;
-        })
-      ),
-    });
-  };
+  // const completeTodo = (id) => {
+  //   setTodos({
+  //     quadrant: todos.quadrant,
+  //     label: todos.label,
+  //     todoItems: Object.assign(
+  //       [],
+  //       todos.todoItems.map((todo) => {
+  //         if (todo.id === id) {
+  //           return {
+  //             ...todo,
+  //             completed: !todo.completed,
+  //           };
+  //         }
+  //         return todo;
+  //       })
+  //     ),
+  //   });
+  // };
 
   return (
     <>
-      <Droppable droppableId="droppable">
+      <ul>
+        {todosStore.todos.map((todo) => {
+          return <div>{todo}</div>;
+        })}
+      </ul>
+      {/* <Droppable droppableId="droppable">
         {(provided) => (
           <ul {...provided.droppableProps} ref={provided.innerRef}>
             {todos.todoItems.map((todo, index) => (
@@ -61,7 +66,7 @@ function TodoList({ todos, setTodos }) {
             {provided.placeholder}
           </ul>
         )}
-      </Droppable>
+      </Droppable> */}
     </>
   );
 }

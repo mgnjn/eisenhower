@@ -1,8 +1,8 @@
 import React from "react";
 import { MODES } from "../../utils/constants";
 
-function StickyBoard({ modeStore }) {
-  return <div>StickyBoard {modeStore.activeMode}</div>;
+function StickyBoard() {
+  return <div>StickyBoard </div>;
 }
 
 export default StickyBoard;

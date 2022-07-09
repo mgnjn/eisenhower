@@ -1,5 +1,6 @@
 import React from "react";
 import styled from "styled-components";
+import { observer } from "mobx-react-lite";
 import Checkbox from "@mui/material/Checkbox";
 import Button from "@mui/material/Button";
 import DeleteIcon from "@mui/icons-material/Delete";
@@ -43,4 +44,4 @@ function Todo({ todo, removeTodo, completeTodo }) {
   );
 }
 
-export default Todo;
+export default observer(Todo);

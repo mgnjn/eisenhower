@@ -1,8 +1,8 @@
 import React from "react";
 import { MODES } from "../../utils/constants";
 
-function LofiBoard({ modeStore }) {
-  return <div>LofiBoard {modeStore.activeMode}</div>;
+function LofiBoard() {
+  return <div>LofiBoard</div>;
 }
 
 export default LofiBoard;

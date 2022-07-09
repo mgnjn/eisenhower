@@ -1,7 +1,7 @@
 import { makeAutoObservable, makeObservable, observable } from "mobx";
 import { MODES } from "../utils/constants";
 
-export class Mode {
+export class ModeStore {
   activeMode = MODES.todoMode;
 
   constructor() {
@@ -12,15 +12,15 @@ export class Mode {
     this.activeMode = newActiveMode;
   }
 
-  setTodoMode() {
+  setToTodoMode() {
     this.activeMode = MODES.todoMode;
   }
 
-  setStickyMode() {
+  setToStickyMode() {
     this.activeMode = MODES.stickyMode;
   }
 
-  setLofiMode() {
+  setToLofiMode() {
     this.activeMode = MODES.lofiMode;
   }
 }
