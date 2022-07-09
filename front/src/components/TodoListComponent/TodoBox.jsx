@@ -1,21 +1,17 @@
 import React from "react";
+import styled from "styled-components";
 import TodoList from "./TodoList";
 import TodoForm from "./TodoForm";
-import styled from "styled-components";
+
 import { DragDropContext } from "react-beautiful-dnd";
-import { useUserStore } from "../../stores/user.store";
-import { observer } from "mobx-react-lite";
-import { toJS } from "mobx";
-import { TodosStore } from "../../stores/todos.store";
 
 const TodoBoxContainer = styled.div`
   margin: 8px;
   border: 1px solid blue;
-  border-radius: 5px;
+  border-radius: 1px;
 `;
 
 function TodoBox({ quadrant, label }) {
-  const todosStore = new TodosStore(quadrant, label);
   // const handleOnDragEnd = (result) => {
   //   if (!result.destination) return;
 
@@ -33,8 +29,8 @@ function TodoBox({ quadrant, label }) {
   return (
     <>
       <TodoBoxContainer>
-        <TodoForm todosStore={todosStore} />
-        {/* <TodoList todosStore={todosStore} /> */}
+        <TodoForm quadrant={quadrant} label={label} />
+        <TodoList quadrant={quadrant} label={label} />
       </TodoBoxContainer>
       {/* <TodoBoxContainer>
         <TodoForm key={quadrant} todos={todos} setTodos={setTodos} />

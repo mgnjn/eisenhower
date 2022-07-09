@@ -1,21 +1,41 @@
-import { makeAutoObservable, makeObservable, observable } from "mobx";
+import { makeAutoObservable } from "mobx";
+import { QUADRANTS } from "../utils/constants";
 
 export class TodosStore {
-  todos = [];
-  quadrant;
-  label;
+  todos = {};
 
-  constructor(quadrant, label) {
-    makeObservable(this, { todos: observable });
-    this.quadrant = quadrant;
-    this.label = label;
+  constructor() {
+    makeAutoObservable(this);
+
+    // umm. ew
+    this.todos[QUADRANTS.q1] = [];
+    this.todos[QUADRANTS.q2] = [];
+    this.todos[QUADRANTS.q3] = [];
+    this.todos[QUADRANTS.q4] = [];
   }
 
-  addTodo(todo) {
-    this.todos.push(todo);
+  addTodo(quadrant, todo) {
+    this.todos[quadrant].push(todo);
   }
 
-  deleteTodo(id) {
-    this.todos = this.todos.filter((todo) => todo.id != id);
+  completeTodo(quadrant, id) {
+    this.todos[quadrant] = Object.assign(
+      [],
+      this.todos[quadrant].map((todo) => {
+        if (todo.id === id) {
+          return {
+            ...todo,
+            completed: !todo.completed,
+          };
+        }
+        return todo;
+      })
+    );
+  }
+
+  deleteTodo(quadrant, id) {
+    this.todos[quadrant] = this.todos[quadrant].filter(
+      (todo) => todo.id !== id
+    );
   }
 }

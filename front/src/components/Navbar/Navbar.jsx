@@ -1,23 +1,21 @@
-import React, { useEffect } from "react";
+import React from "react";
 import { MODES } from "../../utils/constants";
-import TodoListBoard from "../TodoListComponent/TodoListBoard";
-import LofiBoard from "../LofiComponent/LofiBoard";
-import StickyBoard from "../StickyComponent/StickyBoard";
-import { Tabs, Tab, Box } from "@mui/material";
-import { TabContext, TabPanel } from "@mui/lab";
 import { observer } from "mobx-react-lite";
 import { useUserStore } from "../../stores/user.store";
 
-function Navbar() {
+import TodoListBoard from "../TodoListComponent/TodoListBoard";
+import LofiBoard from "../LofiComponent/LofiBoard";
+import StickyBoard from "../StickyComponent/StickyBoard";
+
+import { Tabs, Tab } from "@mui/material";
+import { TabContext } from "@mui/lab";
+
+const Navbar = observer(() => {
   const userStore = useUserStore();
 
   const handleTabChange = (newTab) => {
     userStore.modeStore.setActiveMode(newTab);
   };
-
-  useEffect(() => {
-    console.log(userStore.modeStore.activeMode);
-  }, [userStore.modeStore.activeMode]);
 
   return (
     <>
@@ -42,6 +40,6 @@ function Navbar() {
       </TabContext>
     </>
   );
-}
+});
 
-export default observer(Navbar);
+export default Navbar;

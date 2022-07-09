@@ -1,15 +1,17 @@
 import { makeAutoObservable } from "mobx";
 import { ModeStore } from "./mode.store";
-import { TodosStore } from "./todos.store";
 import { createContext, useContext } from "react";
+import { TodosStore } from "./todos.store";
 
 export class UserStore {
   modeStore;
+  todosStore;
 
   constructor() {
     makeAutoObservable(this);
 
     this.modeStore = new ModeStore();
+    this.todosStore = new TodosStore();
   }
 }
 

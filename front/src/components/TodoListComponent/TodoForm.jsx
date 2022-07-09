@@ -1,12 +1,10 @@
-import AddBoxIcon from "@mui/icons-material/AddBox";
-import Button from "@mui/material/Button";
-import Todo from "../../stores/todo.store";
-import Todos, { TodosStore } from "../../stores/todos.store";
-import { toJS } from "mobx";
-import React, { useEffect } from "react";
-import { useState } from "react";
+import React, { useState } from "react";
 import { nanoid } from "nanoid";
 import { observer } from "mobx-react-lite";
+import { useUserStore } from "../../stores/user.store";
+
+import AddBoxIcon from "@mui/icons-material/AddBox";
+import Button from "@mui/material/Button";
 
 const BLANK_TODO = {
   quadrant: "",
@@ -15,66 +13,52 @@ const BLANK_TODO = {
   completed: false,
 };
 
-function TodoForm({ todosStore }) {
+const TodoForm = observer(({ quadrant, label }) => {
+  const userStore = useUserStore();
+  const todosStore = userStore.todosStore;
+
   const [currentTodo, setCurrentTodo] = useState(BLANK_TODO);
 
   const handleInputChange = (e) => {
-    setCurrentTodo({ ...currentTodo.task, task: e.target.value });
+    setCurrentTodo({ ...currentTodo, task: e.target.value, quadrant, label });
   };
 
   const onAddTodo = () => {
-    if (currentTodo === "") return;
+    if (currentTodo.task === "") return;
 
     const id = nanoid();
-    const newTodo = new Todo(id, todosStore.quadrant);
 
-    newTodo.updateTask(currentTodo);
-    todosStore.addTodo(newTodo);
+    todosStore.addTodo(quadrant, {
+      id,
+      quadrant,
+      label: todosStore.label,
+      task: currentTodo.task,
+      completed: false,
+    });
 
     setCurrentTodo(BLANK_TODO);
   };
-
-  useEffect(() => {
-    console.log(Object.values(todosStore.todos));
-  }, [todosStore.todos]);
-
-  // const onAddTodo = () => {
-  //   if (todo.task === "") return;
-
-  //   const identifier = nanoid();
-
-  //   const newTodo = {
-  //     quadrant: todos.quadrant,
-  //     label: todos.label,
-  //     id: identifier,
-  //     task: todo.task,
-  //     completed: false,
-  //   };
-
-  //   setTodos({
-  //     quadrant: todos.quadrant,
-  //     label: todos.label,
-  //     todoItems: [...todos.todoItems, newTodo],
-  //   });
-
-  //   setTodo(blankTodo);
-  // };
 
   return (
     <>
       <div>
         <form>
-          <label> {todosStore.label}</label>{" "}
+          <label> {label}</label>{" "}
           <input
             type="text"
             onChange={(e) => handleInputChange(e)}
             value={currentTodo.task}
           />
-          <Button startIcon={<AddBoxIcon />} onClick={() => onAddTodo()} />
+          <Button
+            startIcon={<AddBoxIcon />}
+            onClick={() => {
+              onAddTodo();
+            }}
+          />
         </form>
       </div>
     </>
   );
-}
+});
 
-export default observer(TodoForm);
+export default TodoForm;

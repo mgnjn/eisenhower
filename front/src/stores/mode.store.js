@@ -11,16 +11,4 @@ export class ModeStore {
   setActiveMode(newActiveMode) {
     this.activeMode = newActiveMode;
   }
-
-  setToTodoMode() {
-    this.activeMode = MODES.todoMode;
-  }
-
-  setToStickyMode() {
-    this.activeMode = MODES.stickyMode;
-  }
-
-  setToLofiMode() {
-    this.activeMode = MODES.lofiMode;
-  }
 }
