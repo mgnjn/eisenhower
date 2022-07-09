@@ -1,39 +1,27 @@
 import React from "react";
+import { observer } from "mobx-react-lite";
+import { useUserStore } from "../../stores/user.store";
+
 import Todo from "./Todo";
+
 import { Draggable, Droppable } from "react-beautiful-dnd";
 
-function TodoList({ todos, setTodos }) {
-  const removeTodo = (id) => {
-    const updatedTodos = todos.todoItems.filter((todo) => todo.id !== id);
-    setTodos({
-      quadrant: todos.quadrant,
-      label: todos.label,
-      todoItems: Object.assign([], updatedTodos),
-    });
-  };
-
-  const completeTodo = (id) => {
-    setTodos({
-      quadrant: todos.quadrant,
-      label: todos.label,
-      todoItems: Object.assign(
-        [],
-        todos.todoItems.map((todo) => {
-          if (todo.id === id) {
-            return {
-              ...todo,
-              completed: !todo.completed,
-            };
-          }
-          return todo;
-        })
-      ),
-    });
-  };
+const TodoList = observer(({ quadrant }) => {
+  const userStore = useUserStore();
+  const todosStore = userStore.todosStore;
 
   return (
     <>
-      <Droppable droppableId="droppable">
+      <ul>
+        {todosStore.todos[quadrant].map((todo) => {
+          return (
+            <Todo key={todo.id} todo={todo}>
+              {todo.task}
+            </Todo>
+          );
+        })}
+      </ul>
+      {/* <Droppable droppableId="droppable">
         {(provided) => (
           <ul {...provided.droppableProps} ref={provided.innerRef}>
             {todos.todoItems.map((todo, index) => (
@@ -61,9 +49,9 @@ function TodoList({ todos, setTodos }) {
             {provided.placeholder}
           </ul>
         )}
-      </Droppable>
+      </Droppable> */}
     </>
   );
-}
+});
 
 export default TodoList;

@@ -3,12 +3,12 @@ import "@fontsource/roboto/400.css";
 import "@fontsource/roboto/500.css";
 import "@fontsource/roboto/700.css";
 
-import Matrix from "./components/Matrix";
+import Navbar from "./components/Navbar/Navbar";
 
-function App() {
+export function App() {
   return (
-    <div className="App">
-      <Matrix />
+    <div>
+      <Navbar />
     </div>
   );
 }
